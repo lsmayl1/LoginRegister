@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity {
-     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-791f2-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-791f2-default-rtdb.firebaseio.com/");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +54,13 @@ public class Register extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.hasChild(phoneTxt)){
-                                Toast.makeText(Register.this, "Phone is already registered", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Register.this, "name is already registered", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 databaseReference.child("users").child(phoneTxt).child("fullname").setValue(fullnameTxt);
                                 databaseReference.child("users").child(phoneTxt).child("email").setValue(emailTxt);
                                 databaseReference.child("users").child(phoneTxt).child("password").setValue(passwordTxt);
-                                databaseReference.child("users").child(phoneTxt).child("number").setValue(phoneTxt);
+                                databaseReference.child("users").child(phoneTxt).child("Username").setValue(phoneTxt);
                                 Toast.makeText(Register.this, "User registered successfully.", Toast.LENGTH_SHORT).show();
                                 finish();
 

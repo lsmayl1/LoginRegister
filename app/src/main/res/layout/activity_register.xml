@@ -6,93 +6,111 @@
     android:layout_height="match_parent"
     tools:context=".Register"
     android:gravity="center"
-
+    android:background="#CACDCD"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:layout_height="60dp"
+        android:fontFamily="@font/rowdies"
         android:gravity="center"
+        android:text="Register Here"
+
+        android:layout_marginBottom="50dp"
         android:textColor="@color/black"
+        android:textSize="25sp"
 
-        android:fontFamily="sans-serif"
-        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        android:text="Register Here"/>
     <EditText
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
         android:id="@+id/fullname"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+
         android:hint="Full name"
+        android:background="@drawable/border"
+        android:textColorHint="@color/main"
+        android:inputType="text"
         android:maxLines="1"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        />
-    <EditText
+        android:paddingEnd="0dp" />
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
+    <EditText
         android:id="@+id/phone"
-        android:hint="Mobile"
-        android:maxLines="1"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        />
-    <EditText
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/border"
+        android:hint="User name"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/main"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp" />
+
+    <EditText
         android:id="@+id/email"
-        android:hint="Email"
-        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/border"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/main"
+        android:layout_marginBottom="10dp"
+        android:maxLines="1"
+        android:minHeight="48dp"
         android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        />
+        android:paddingEnd="0dp" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:id="@+id/password"
-        android:hint="Password"
-        android:maxLines="1"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        />
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:id="@+id/conPassword"
-        android:hint="Con Password"
-        android:maxLines="1"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/border"
+        android:hint="Password"
+        android:textColorHint="@color/main"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"
+        android:maxLines="1"
+        android:minHeight="48dp"
         android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        />
+        android:paddingEnd="0dp" />
+
+    <EditText
+        android:id="@+id/conPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/border"
+        android:hint="Repassed"
+        android:inputType="textPassword"
+        android:textColorHint="@color/main"
+        android:maxLines="1"
+        android:minHeight="48dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="40dp"
-        />
+        android:layout_marginEnd="20dp"
+        android:background="@color/main"
+        android:fontFamily="@font/rowdies"
+        android:text="Register" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,6 +129,7 @@
             android:layout_height="wrap_content"
             android:text="Login Now"
             android:textStyle="bold"
+            android:textColor="@color/black"
 
             />
     </LinearLayout>

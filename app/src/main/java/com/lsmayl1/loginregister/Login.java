@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,17 @@ public class Login extends AppCompatActivity {
         final EditText password =findViewById(R.id.password);
         final Button loginBtn =findViewById(R.id.loginBtn);
         final TextView registerNowBtn =findViewById(R.id.registerNowBtn);
+        final CheckBox remember = findViewById(R.id.rememberme);
+
+        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+         String checkbox = preferences.getString("remember", "");
+         if (checkbox.equals("true")){
+           Intent intent =  new Intent(Login.this, MainActivity.class);
+           startActivity(intent);
+
+         }else if(checkbox.equals("false")){
+             Toast.makeText(Login.this, "Please registr", Toast.LENGTH_SHORT).show();
+         }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,33 +55,33 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Please enter your mobile or password", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                        databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                if(snapshot.hasChild(phoneTxt)){
+                            if(snapshot.hasChild(phoneTxt)){
 
-                                    final String getPassword = snapshot.child(phoneTxt).child("password").getValue(String.class);
-                                        if(getPassword.equals(PasswordTxt)){
-                                            Toast.makeText(Login.this, "successfully logged in", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(Login.this, MainActivity.class));
-                                            finish();
-                                        }
-                                        else{
-                                            Toast.makeText(Login.this, "Wrong password", Toast.LENGTH_SHORT).show();
-                                        }
-
+                                final String getPassword = snapshot.child(phoneTxt).child("password").getValue(String.class);
+                                if(getPassword.equals(PasswordTxt)){
+                                    Toast.makeText(Login.this, "successfully logged in", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Login.this, MainActivity.class));
+                                    finish();
                                 }
                                 else{
                                     Toast.makeText(Login.this, "Wrong password", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
 
                             }
-                        });
+                            else{
+                                Toast.makeText(Login.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
         });
@@ -78,7 +92,29 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this,Register.class ));
             }
         });
+
+
+        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if ( compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "true");
+                    editor.apply();
+                    Toast.makeText(Login.this, "Checked",Toast.LENGTH_SHORT  ).show();
+                }else  if (!compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "false");
+                    editor.apply();
+                    Toast.makeText(Login.this, "Unchecked",Toast.LENGTH_SHORT  ).show();
+
+                }
+            }
+        });
     }
+
 
 
 }
