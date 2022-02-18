@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#CACDCD"
+    android:background="#ABCACDCD"
     android:orientation="vertical"
     tools:context=".Login">
 
@@ -18,14 +18,14 @@
     android:layout_marginBottom="20dp"
 
     android:fontFamily="@font/rowdies"
-    android:textSize="25sp"
+    android:textSize="35sp"
 
     android:text="Login Here"/>
 
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -42,10 +42,12 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:hint="Password"
+
+
         android:inputType="textPassword"
         android:background="@drawable/border"
         android:textColorHint="@color/main"
@@ -59,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-
+        android:fontFamily="@font/rowdies"
         android:text="Remember me" />
 
 
@@ -69,8 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:background="@color/main"
         android:fontFamily="@font/rowdies"
 

@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/LoginRegister/app/src/main/res/drawable/border.xml" value="0.1905" />
-        <entry key="..\:/LoginRegister/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/LoginRegister/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/LoginRegister/app/src/main/res/layout/activity_main.xml" value="0.296875" />
         <entry key="..\:/LoginRegister/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/LoginRegister/app/src/main/res/layout/activity_uploadphoto.xml" value="0.19655797101449277" />
+        <entry key="..\:/LoginRegister/app/src/main/res/layout/fragment_firstfragment.xml" value="0.2869791666666667" />
+        <entry key="..\:/LoginRegister/app/src/main/res/layout/fragment_second.xml" value="0.23052536231884058" />
       </map>
     </option>
   </component>
@@ -15,5 +18,14 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="StickyNotes">
+    <option name="stickyNotes">
+      <list>
+        <SerializedStickyNote>
+          <option name="description" value="border" />
+        </SerializedStickyNote>
+      </list>
+    </option>
   </component>
 </project>

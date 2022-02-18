@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -44,45 +45,42 @@ public class Login extends AppCompatActivity {
              Toast.makeText(Login.this, "Please registr", Toast.LENGTH_SHORT).show();
          }
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        loginBtn.setOnClickListener(view -> {
 
-                final String phoneTxt = phone.getText().toString();
-                final String PasswordTxt = password.getText().toString();
+            final String phoneTxt = phone.getText().toString();
+            final String PasswordTxt = password.getText().toString();
 
-                if(phoneTxt.isEmpty() || PasswordTxt.isEmpty()){
-                    Toast.makeText(Login.this, "Please enter your mobile or password", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            if(phoneTxt.isEmpty() || PasswordTxt.isEmpty()){
+                Toast.makeText(Login.this, "Please enter your mobile or password", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            if(snapshot.hasChild(phoneTxt)){
+                        if(snapshot.hasChild(phoneTxt)){
 
-                                final String getPassword = snapshot.child(phoneTxt).child("password").getValue(String.class);
-                                if(getPassword.equals(PasswordTxt)){
-                                    Toast.makeText(Login.this, "successfully logged in", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Login.this, MainActivity.class));
-                                    finish();
-                                }
-                                else{
-                                    Toast.makeText(Login.this, "Wrong password", Toast.LENGTH_SHORT).show();
-                                }
-
+                            final String getPassword = snapshot.child(phoneTxt).child("password").getValue(String.class);
+                            if(getPassword.equals(PasswordTxt)){
+                                Toast.makeText(Login.this, "successfully logged in", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Login.this, MainActivity.class));
+                                finish();
                             }
                             else{
                                 Toast.makeText(Login.this, "Wrong password", Toast.LENGTH_SHORT).show();
                             }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    });
-                }
+                        else{
+                            Toast.makeText(Login.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
         registerNowBtn.setOnClickListener(new View.OnClickListener() {
